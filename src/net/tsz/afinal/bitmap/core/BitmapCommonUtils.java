@@ -6,12 +6,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.StatFs;
-import android.util.Log;
 
 public class BitmapCommonUtils {
-
-	private static final String	TAG	= "BitmapCommonUtils";
-
 	public static File getDiskCacheDir(Context context, String uniqueName) {
 		final String cachePath = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) ? getExternalCacheDir(
 				context).getPath()
