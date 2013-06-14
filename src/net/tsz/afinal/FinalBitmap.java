@@ -127,20 +127,6 @@ public class FinalBitmap {
 		return mFinalBitmap;
 	}
 
-	/**
-	 * 鍒涘缓finalBitmap
-	 * 
-	 * @param ctx
-	 * @param diskCachePath
-	 *           纾佺洏缂撳瓨璺緞
-	 * @param memoryCacheSize
-	 *           鍐呭瓨缂撳瓨澶у皬
-	 * @param diskCacheSize
-	 *           纾佺洏缂撳瓨澶у皬
-	 * @param threadSize
-	 *           绾跨▼骞跺彂鏁伴噺
-	 * @return
-	 */
 	public static FinalBitmap create(Context ctx, String diskCachePath, int memoryCacheSize, int diskCacheSize,
 			int threadSize) {
 		if (mFinalBitmap == null) {
@@ -500,27 +486,14 @@ public class FinalBitmap {
 		new CacheExecutecTask().execute(CacheExecutecTask.MESSAGE_CLEAR_MEMORY);
 	}
 
-	/**
-	 * 鏍规嵁key娓呴櫎鎸囧畾鐨勫唴瀛樼紦瀛�
-	 * 
-	 * @param key
-	 */
 	public void clearMemoryCache(String key) {
 		new CacheExecutecTask().execute(CacheExecutecTask.MESSAGE_CLEAR_KEY_IN_MEMORY, key);
 	}
 
-	/**
-	 * 娓呴櫎纾佺洏缂撳瓨
-	 */
 	public void clearDiskCache() {
 		new CacheExecutecTask().execute(CacheExecutecTask.MESSAGE_CLEAR_DISK);
 	}
 
-	/**
-	 * 鏍规嵁key娓呴櫎鎸囧畾鐨勫唴瀛樼紦瀛�
-	 * 
-	 * @param key
-	 */
 	public void clearDiskCache(String key) {
 		new CacheExecutecTask().execute(CacheExecutecTask.MESSAGE_CLEAR_KEY_IN_DISK, key);
 	}
@@ -532,34 +505,16 @@ public class FinalBitmap {
 		new CacheExecutecTask().execute(CacheExecutecTask.MESSAGE_FLUSH);
 	}
 
-	/**
-	 * 鍏抽棴缂撳瓨
-	 * <p>
-	 * 鎵ц杩囨鏂规硶鍚�FinalBitmap鐨勭紦瀛樺凡缁忓け鏁�寤鸿閫氳繃FinalBitmap.create()鑾峰彇鏂扮殑瀹炰緥
-	 * 
-	 * @author fantouch
-	 */
 	public void closeCache() {
 		new CacheExecutecTask().execute(CacheExecutecTask.MESSAGE_CLOSE);
 	}
 
-	/**
-	 * 閫�嚭姝ｅ湪鍔犺浇鐨勭嚎绋嬶紝绋嬪簭閫�嚭鐨勬椂鍊欒皟鐢ㄨ瘝鏂规硶
-	 * 
-	 * @param exitTasksEarly
-	 */
 	public void exitTasksEarly(boolean exitTasksEarly) {
 		mExitTasksEarly = exitTasksEarly;
 		if (exitTasksEarly)
 			pauseWork(false);// 璁╂殏鍋滅殑绾跨▼缁撴潫
 	}
 
-	/**
-	 * 鏆傚仠姝ｅ湪鍔犺浇鐨勭嚎绋嬶紝鐩戝惉listview鎴栬�gridview姝ｅ湪婊戝姩鐨勬椂鍊欐潯鐢ㄨ瘝鏂规硶
-	 * 
-	 * @param pauseWork
-	 *           true鍋滄鏆傚仠绾跨▼锛宖alse缁х画绾跨▼
-	 */
 	public void pauseWork(boolean pauseWork) {
 		synchronized (mPauseWorkLock) {
 			mPauseWork = pauseWork;
@@ -580,13 +535,6 @@ public class FinalBitmap {
 		return null;
 	}
 
-	/**
-	 * 妫�祴 imageView涓槸鍚﹀凡缁忔湁绾跨▼鍦ㄨ繍琛�
-	 * 
-	 * @param data
-	 * @param imageView
-	 * @return true 娌℃湁 false 鏈夌嚎绋嬪湪杩愯浜�
-	 */
 	public static boolean checkImageTask(Object data, ImageView imageView) {
 		final BitmapLoadAndDisplayTask bitmapWorkerTask = getBitmapTaskFromImageView(imageView);
 
@@ -670,11 +618,6 @@ public class FinalBitmap {
 		}
 	}
 
-	/**
-	 * bitmap涓嬭浇鏄剧ず鐨勭嚎绋�
-	 * 
-	 * @author michael yang
-	 */
 	private class BitmapLoadAndDisplayTask extends AsyncTask<Object, Void, Bitmap> {
 		private Object									data;
 		private final WeakReference<ImageView>	imageViewReference;
@@ -772,7 +715,7 @@ public class FinalBitmap {
 		public BitmapProcess			bitmapProcess;
 		public BitmapDisplayConfig	defaultDisplayConfig;
 		public float					memCacheSizePercent;								// 缂撳瓨鐧惧垎姣旓紝android绯荤粺鍒嗛厤缁欐瘡涓猘pk鍐呭瓨鐨勫ぇ灏�
-		public int						memCacheSize;											// 鍐呭瓨缂撳瓨鐧惧垎姣�
+		public int						memCacheSize;
 		public int						diskCacheSize;										// 纾佺洏鐧惧垎姣�
 		public int						poolSize						= 3;						// 榛樿鐨勭嚎绋嬫睜绾跨▼骞跺彂鏁伴噺
 		public int						originalDiskCacheSize	= 30 * 1024 * 1024;	// 50MB
@@ -783,9 +726,9 @@ public class FinalBitmap {
 			defaultDisplayConfig.setAnimation(null);
 			defaultDisplayConfig.setAnimationType(BitmapDisplayConfig.AnimationType.fadeIn);
 
-			// 璁剧疆鍥剧墖鐨勬樉绀烘渶澶у昂瀵革紙涓哄睆骞曠殑澶у皬,榛樿涓哄睆骞曞搴︾殑1/3锛�
 			DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-			int defaultWidth = (int) Math.floor(displayMetrics.widthPixels / 4);
+			// int defaultWidth = (int) Math.floor(displayMetrics.widthPixels / 4);
+			int defaultWidth = displayMetrics.widthPixels;
 			defaultDisplayConfig.setBitmapHeight(defaultWidth);
 			defaultDisplayConfig.setBitmapWidth(defaultWidth);
 

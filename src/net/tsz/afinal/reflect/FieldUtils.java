@@ -1,18 +1,3 @@
-/**
- * Copyright (c) 2012-2013, Michael Yang 杨福海 (www.yangfuhai.com).
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package net.tsz.afinal.reflect;
 
 import java.lang.reflect.Field;
@@ -28,14 +13,7 @@ import net.tsz.afinal.annotation.sqlite.OneToMany;
 import net.tsz.afinal.annotation.sqlite.Property;
 import net.tsz.afinal.annotation.sqlite.Transient;
 
-/**
- * @title 字段操作工具类
- * @description 描述
- * @company 探索者网络工作室(www.tsz.net)
- * @author michael Young (www.YangFuhai.com)
- * @version 1.0
- * @created 2012-10-10
- */
+
 public class FieldUtils {
 	public static Method getFieldGetMethod(Class<?> clazz, Field f) {
 		String fn = f.getName();
@@ -81,7 +59,6 @@ public class FieldUtils {
 	private static boolean isISStart(String fieldName){
 		if(fieldName==null || fieldName.trim().length()==0)
 			return false;
-		//is开头，并且is之后第一个字母是大写 比如 isAdmin
 		return fieldName.startsWith("is") && !Character.isLowerCase(fieldName.charAt(2));
 	}
 	
@@ -122,34 +99,16 @@ public class FieldUtils {
 		return null;
 	}
 	
-	/**
-	 * 获取某个字段的值
-	 * @param entity
-	 * @param fieldName
-	 * @return
-	 */
 	public static Object getFieldValue(Object entity,Field field){
 		Method method = getFieldGetMethod(entity.getClass(), field);
 		return invoke(entity, method);
 	}
 	
-	/**
-	 * 获取某个字段的值
-	 * @param entity
-	 * @param fieldName
-	 * @return
-	 */
 	public static Object getFieldValue(Object entity,String fieldName){
 		Method method = getFieldGetMethod(entity.getClass(), fieldName);
 		return invoke(entity, method);
 	}
 	
-	/**
-	 * 设置某个字段的值
-	 * @param entity
-	 * @param fieldName
-	 * @return
-	 */
 	public static void setFieldValue(Object entity,Field field,Object value){
 		try {
 			Method set = getFieldSetMethod(entity.getClass(), field);
@@ -176,12 +135,6 @@ public class FieldUtils {
 	}
 	
 	
-	/**
-	 * 获取某个字段的值
-	 * @param entity
-	 * @param fieldName
-	 * @return
-	 */
 	public static Field getFieldByColumnName(Class<?> clazz,String columnName){
 		Field field = null;
 		if(columnName!=null){
@@ -214,13 +167,6 @@ public class FieldUtils {
 		return field;
 	}
 	
-	
-	/**
-	 * 获取某个字段的值
-	 * @param entity
-	 * @param fieldName
-	 * @return
-	 */
 	public static Field getFieldByName(Class<?> clazz,String fieldName){
 		Field field = null;
 		if(fieldName!=null){
@@ -234,15 +180,6 @@ public class FieldUtils {
 		}
 		return field;
 	}
-	
-	
-	
-	/**
-	 * 获取某个熟悉对应的 表的列
-	 * @param entity
-	 * @param fieldName
-	 * @return
-	 */
 	public static String getColumnByField(Field field){
 		Property property = field.getAnnotation(Property.class);
 		if(property != null && property.column().trim().length() != 0){
@@ -276,23 +213,10 @@ public class FieldUtils {
 		return null ;
 	}
 
-
-
-	/**
-	 * 检测 字段是否已经被标注为 非数据库字段
-	 * @param f
-	 * @return
-	 */
 	public static boolean isTransient(Field f) {
 		return f.getAnnotation(Transient.class) != null;
 	}
 	
-	/**
-	 * 获取某个实体执行某个方法的结果
-	 * @param obj
-	 * @param method
-	 * @return
-	 */
 	private static Object invoke(Object obj , Method method){
 		if(obj == null || method == null) return null;
 		try {
