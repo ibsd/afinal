@@ -15,18 +15,17 @@
  */
 package net.tsz.afinal.db.table;
 
-public class OneToMany extends Property{
+public class OneToMany extends Property {
 
-	private Class<?> oneClass;
+    private Class<?> oneClass;
 
-	public Class<?> getOneClass() {
-		return oneClass;
-	}
+    public Class<?> getOneClass() {
+        return oneClass;
+    }
 
-	public void setOneClass(Class<?> oneClass) {
-		this.oneClass = oneClass;
-	}
+    public void setOneClass(Class<?> oneClass) {
+        this.oneClass = oneClass;
+    }
 
-	
-	
+
 }

@@ -15,6 +15,14 @@
  */
 package net.tsz.afinal.http;
 
+import android.os.SystemClock;
+
+import org.apache.http.NoHttpResponseException;
+import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.protocol.ExecutionContext;
+import org.apache.http.protocol.HttpContext;
+
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.SocketException;
@@ -23,20 +31,12 @@ import java.util.HashSet;
 
 import javax.net.ssl.SSLHandshakeException;
 
-import org.apache.http.NoHttpResponseException;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.HttpRequestRetryHandler;
-import org.apache.http.protocol.ExecutionContext;
-import org.apache.http.protocol.HttpContext;
-
-import android.os.SystemClock;
-
 public class RetryHandler implements HttpRequestRetryHandler {
     private static final int RETRY_SLEEP_TIME_MILLIS = 1000;
-    
+
     //网络异常，继续
     private static HashSet<Class<?>> exceptionWhitelist = new HashSet<Class<?>>();
-    
+
     //用户异常，不继续（如，用户中断线程）
     private static HashSet<Class<?>> exceptionBlacklist = new HashSet<Class<?>>();
 
@@ -62,7 +62,7 @@ public class RetryHandler implements HttpRequestRetryHandler {
         Boolean b = (Boolean) context.getAttribute(ExecutionContext.HTTP_REQ_SENT);
         boolean sent = (b != null && b.booleanValue());
 
-        if(executionCount > maxRetries) {
+        if (executionCount > maxRetries) {
             // 尝试次数超过用户定义的测试，默认5次
             retry = false;
         } else if (exceptionBlacklist.contains(exception.getClass())) {
@@ -74,13 +74,13 @@ public class RetryHandler implements HttpRequestRetryHandler {
             retry = true;
         }
 
-        if(retry) {
-            HttpUriRequest currentReq = (HttpUriRequest) context.getAttribute( ExecutionContext.HTTP_REQUEST );
-            retry = currentReq!=null && !"POST".equals(currentReq.getMethod());
+        if (retry) {
+            HttpUriRequest currentReq = (HttpUriRequest) context.getAttribute(ExecutionContext.HTTP_REQUEST);
+            retry = currentReq != null && !"POST".equals(currentReq.getMethod());
         }
 
-        if(retry) {
-        	//休眠1秒钟后再继续尝试
+        if (retry) {
+            //休眠1秒钟后再继续尝试
             SystemClock.sleep(RETRY_SLEEP_TIME_MILLIS);
         } else {
             exception.printStackTrace();
@@ -88,5 +88,5 @@ public class RetryHandler implements HttpRequestRetryHandler {
 
         return retry;
     }
-    
+
 }

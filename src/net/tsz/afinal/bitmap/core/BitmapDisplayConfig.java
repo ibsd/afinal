@@ -19,70 +19,70 @@ import android.graphics.Bitmap;
 import android.view.animation.Animation;
 
 public class BitmapDisplayConfig {
-	
-	
-	private int bitmapWidth;
-	private int bitmapHeight;
-	
-	private Animation animation;
-	
-	private int animationType;
-	private Bitmap loadingBitmap;
-	private Bitmap loadfailBitmap;
-	
 
-	public int getBitmapWidth() {
-		return bitmapWidth;
-	}
 
-	public void setBitmapWidth(int bitmapWidth) {
-		this.bitmapWidth = bitmapWidth;
-	}
+    private int bitmapWidth;
+    private int bitmapHeight;
 
-	public int getBitmapHeight() {
-		return bitmapHeight;
-	}
+    private Animation animation;
 
-	public void setBitmapHeight(int bitmapHeight) {
-		this.bitmapHeight = bitmapHeight;
-	}
+    private int animationType;
+    private Bitmap loadingBitmap;
+    private Bitmap loadfailBitmap;
 
-	public Animation getAnimation() {
-		return animation;
-	}
 
-	public void setAnimation(Animation animation) {
-		this.animation = animation;
-	}
+    public int getBitmapWidth() {
+        return bitmapWidth;
+    }
 
-	public int getAnimationType() {
-		return animationType;
-	}
+    public void setBitmapWidth(int bitmapWidth) {
+        this.bitmapWidth = bitmapWidth;
+    }
 
-	public void setAnimationType(int animationType) {
-		this.animationType = animationType;
-	}
+    public int getBitmapHeight() {
+        return bitmapHeight;
+    }
 
-	public Bitmap getLoadingBitmap() {
-		return loadingBitmap;
-	}
+    public void setBitmapHeight(int bitmapHeight) {
+        this.bitmapHeight = bitmapHeight;
+    }
 
-	public void setLoadingBitmap(Bitmap loadingBitmap) {
-		this.loadingBitmap = loadingBitmap;
-	}
+    public Animation getAnimation() {
+        return animation;
+    }
 
-	public Bitmap getLoadfailBitmap() {
-		return loadfailBitmap;
-	}
+    public void setAnimation(Animation animation) {
+        this.animation = animation;
+    }
 
-	public void setLoadfailBitmap(Bitmap loadfailBitmap) {
-		this.loadfailBitmap = loadfailBitmap;
-	}
+    public int getAnimationType() {
+        return animationType;
+    }
 
-	
-	public class AnimationType{
-		public static final int userDefined = 0;
-		public static final int fadeIn = 1;
-	}
+    public void setAnimationType(int animationType) {
+        this.animationType = animationType;
+    }
+
+    public Bitmap getLoadingBitmap() {
+        return loadingBitmap;
+    }
+
+    public void setLoadingBitmap(Bitmap loadingBitmap) {
+        this.loadingBitmap = loadingBitmap;
+    }
+
+    public Bitmap getLoadfailBitmap() {
+        return loadfailBitmap;
+    }
+
+    public void setLoadfailBitmap(Bitmap loadfailBitmap) {
+        this.loadfailBitmap = loadfailBitmap;
+    }
+
+
+    public class AnimationType {
+        public static final int userDefined = 0;
+        public static final int fadeIn = 1;
+    }
 
 }

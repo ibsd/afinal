@@ -15,19 +15,17 @@
  */
 package net.tsz.afinal.db.table;
 
-public class ManyToOne extends Property{
+public class ManyToOne extends Property {
 
-	private Class<?> manyClass;
+    private Class<?> manyClass;
 
-	public Class<?> getManyClass() {
-		return manyClass;
-	}
+    public Class<?> getManyClass() {
+        return manyClass;
+    }
 
-	public void setManyClass(Class<?> manyClass) {
-		this.manyClass = manyClass;
-	}
+    public void setManyClass(Class<?> manyClass) {
+        this.manyClass = manyClass;
+    }
 
-	
-	
-	
+
 }

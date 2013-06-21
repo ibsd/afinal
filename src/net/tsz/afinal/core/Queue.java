@@ -23,31 +23,31 @@ import java.util.Collection;
  * specifically for use with capacity-restricted <tt>Queue</tt>
  * implementations; in most implementations, insert operations cannot
  * fail.
- *
- * <p>
+ * <p/>
+ * <p/>
  * <table BORDER CELLPADDING=3 CELLSPACING=1>
- *  <tr>
- *    <td></td>
- *    <td ALIGN=CENTER><em>Throws exception</em></td>
- *    <td ALIGN=CENTER><em>Returns special value</em></td>
- *  </tr>
- *  <tr>
- *    <td><b>Insert</b></td>
- *    <td>{@link #add add(e)}</td>
- *    <td>{@link #offer offer(e)}</td>
- *  </tr>
- *  <tr>
- *    <td><b>Remove</b></td>
- *    <td>{@link #remove remove()}</td>
- *    <td>{@link #poll poll()}</td>
- *  </tr>
- *  <tr>
- *    <td><b>Examine</b></td>
- *    <td>{@link #element element()}</td>
- *    <td>{@link #peek peek()}</td>
- *  </tr>
+ * <tr>
+ * <td></td>
+ * <td ALIGN=CENTER><em>Throws exception</em></td>
+ * <td ALIGN=CENTER><em>Returns special value</em></td>
+ * </tr>
+ * <tr>
+ * <td><b>Insert</b></td>
+ * <td>{@link #add add(e)}</td>
+ * <td>{@link #offer offer(e)}</td>
+ * </tr>
+ * <tr>
+ * <td><b>Remove</b></td>
+ * <td>{@link #remove remove()}</td>
+ * <td>{@link #poll poll()}</td>
+ * </tr>
+ * <tr>
+ * <td><b>Examine</b></td>
+ * <td>{@link #element element()}</td>
+ * <td>{@link #peek peek()}</td>
+ * </tr>
  * </table>
- *
+ * <p/>
  * <p>Queues typically, but do not necessarily, order elements in a
  * FIFO (first-in-first-out) manner.  Among the exceptions are
  * priority queues, which order elements according to a supplied
@@ -59,7 +59,7 @@ import java.util.Collection;
  * the <em> tail</em> of the queue. Other kinds of queues may use
  * different placement rules.  Every <tt>Queue</tt> implementation
  * must specify its ordering properties.
- *
+ * <p/>
  * <p>The {@link #offer offer} method inserts an element if possible,
  * otherwise returning <tt>false</tt>.  This differs from the {@link
  * java.util.Collection#add Collection.add} method, which can fail to
@@ -67,7 +67,7 @@ import java.util.Collection;
  * <tt>offer</tt> method is designed for use when failure is a normal,
  * rather than exceptional occurrence, for example, in fixed-capacity
  * (or &quot;bounded&quot;) queues.
- *
+ * <p/>
  * <p>The {@link #remove()} and {@link #poll()} methods remove and
  * return the head of the queue.
  * Exactly which element is removed from the queue is a
@@ -76,16 +76,16 @@ import java.util.Collection;
  * <tt>poll()</tt> methods differ only in their behavior when the
  * queue is empty: the <tt>remove()</tt> method throws an exception,
  * while the <tt>poll()</tt> method returns <tt>null</tt>.
- *
+ * <p/>
  * <p>The {@link #element()} and {@link #peek()} methods return, but do
  * not remove, the head of the queue.
- *
+ * <p/>
  * <p>The <tt>Queue</tt> interface does not define the <i>blocking queue
  * methods</i>, which are common in concurrent programming.  These methods,
  * which wait for elements to appear or for space to become available, are
  * defined in the {@link java.util.concurrent.BlockingQueue} interface, which
  * extends this interface.
- *
+ * <p/>
  * <p><tt>Queue</tt> implementations generally do not allow insertion
  * of <tt>null</tt> elements, although some implementations, such as
  * {@link LinkedList}, do not prohibit insertion of <tt>null</tt>.
@@ -93,7 +93,7 @@ import java.util.Collection;
  * not be inserted into a <tt>Queue</tt>, as <tt>null</tt> is also
  * used as a special return value by the <tt>poll</tt> method to
  * indicate that the queue contains no elements.
- *
+ * <p/>
  * <p><tt>Queue</tt> implementations generally do not define
  * element-based versions of methods <tt>equals</tt> and
  * <tt>hashCode</tt> but instead inherit the identity based versions
@@ -101,6 +101,8 @@ import java.util.Collection;
  * always well-defined for queues with the same elements but different
  * ordering properties.
  *
+ * @param <E> the type of elements held in this collection
+ * @author Doug Lea
  * @see java.util.Collection
  * @see LinkedList
  * @see PriorityQueue
@@ -110,8 +112,6 @@ import java.util.Collection;
  * @see java.util.concurrent.LinkedBlockingQueue
  * @see java.util.concurrent.PriorityBlockingQueue
  * @since 1.5
- * @author Doug Lea
- * @param <E> the type of elements held in this collection
  */
 public interface Queue<E> extends Collection<E> {
     /**
@@ -122,14 +122,14 @@ public interface Queue<E> extends Collection<E> {
      *
      * @param e the element to add
      * @return <tt>true</tt> (as specified by {@link Collection#add})
-     * @throws IllegalStateException if the element cannot be added at this
-     *         time due to capacity restrictions
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null and
-     *         this queue does not permit null elements
+     * @throws IllegalStateException    if the element cannot be added at this
+     *                                  time due to capacity restrictions
+     * @throws ClassCastException       if the class of the specified element
+     *                                  prevents it from being added to this queue
+     * @throws NullPointerException     if the specified element is null and
+     *                                  this queue does not permit null elements
      * @throws IllegalArgumentException if some property of this element
-     *         prevents it from being added to this queue
+     *                                  prevents it from being added to this queue
      */
     boolean add(E e);
 
@@ -143,12 +143,12 @@ public interface Queue<E> extends Collection<E> {
      * @param e the element to add
      * @return <tt>true</tt> if the element was added to this queue, else
      *         <tt>false</tt>
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this queue
-     * @throws NullPointerException if the specified element is null and
-     *         this queue does not permit null elements
+     * @throws ClassCastException       if the class of the specified element
+     *                                  prevents it from being added to this queue
+     * @throws NullPointerException     if the specified element is null and
+     *                                  this queue does not permit null elements
      * @throws IllegalArgumentException if some property of this element
-     *         prevents it from being added to this queue
+     *                                  prevents it from being added to this queue
      */
     boolean offer(E e);
 

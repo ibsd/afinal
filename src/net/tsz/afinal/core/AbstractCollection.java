@@ -49,26 +49,21 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * returned as result of this method call, {@code false} otherwise. If this
      * {@code Collection} does not support adding elements, an {@code
      * UnsupportedOperationException} is thrown.
-     * <p>
+     * <p/>
      * If the passed {@code Collection} is changed during the process of adding elements
      * to this {@code Collection}, the behavior depends on the behavior of the passed
      * {@code Collection}.
      *
-     * @param collection
-     *            the collection of objects.
+     * @param collection the collection of objects.
      * @return {@code true} if this {@code Collection} is modified, {@code false}
      *         otherwise.
-     * @throws UnsupportedOperationException
-     *                if adding to this {@code Collection} is not supported.
-     * @throws ClassCastException
-     *                if the class of an object is inappropriate for this
-     *                {@code Collection}.
-     * @throws IllegalArgumentException
-     *                if an object cannot be added to this {@code Collection}.
-     * @throws NullPointerException
-     *                if {@code collection} is {@code null}, or if it contains
-     *                {@code null} elements and this {@code Collection} does not support
-     *                such elements.
+     * @throws UnsupportedOperationException if adding to this {@code Collection} is not supported.
+     * @throws ClassCastException            if the class of an object is inappropriate for this
+     *                                       {@code Collection}.
+     * @throws IllegalArgumentException      if an object cannot be added to this {@code Collection}.
+     * @throws NullPointerException          if {@code collection} is {@code null}, or if it contains
+     *                                       {@code null} elements and this {@code Collection} does not support
+     *                                       such elements.
      */
     public boolean addAll(Collection<? extends E> collection) {
         boolean result = false;
@@ -86,13 +81,12 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * This implementation iterates over this {@code Collection} and calls the {@code
      * remove} method on each element. If the iterator does not support removal
      * of elements, an {@code UnsupportedOperationException} is thrown.
-     * <p>
+     * <p/>
      * Concrete implementations usually can clear a {@code Collection} more efficiently
      * and should therefore overwrite this method.
      *
-     * @throws UnsupportedOperationException
-     *                it the iterator does not support removing elements from
-     *                this {@code Collection}
+     * @throws UnsupportedOperationException it the iterator does not support removing elements from
+     *                                       this {@code Collection}
      * @see #iterator
      * @see #isEmpty
      * @see #size
@@ -114,15 +108,12 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * each element {@code e} returned by the iterator is compared with the test
      * {@code e == null}.
      *
-     * @param object
-     *            the object to search for.
+     * @param object the object to search for.
      * @return {@code true} if object is an element of this {@code Collection}, {@code
      *         false} otherwise.
-     * @throws ClassCastException
-     *                if the object to look for isn't of the correct type.
-     * @throws NullPointerException
-     *                if the object to look for is {@code null} and this
-     *                {@code Collection} doesn't support {@code null} elements.
+     * @throws ClassCastException   if the object to look for isn't of the correct type.
+     * @throws NullPointerException if the object to look for is {@code null} and this
+     *                              {@code Collection} doesn't support {@code null} elements.
      */
     public boolean contains(Object object) {
         Iterator<E> it = iterator();
@@ -148,19 +139,15 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * {@code Collection}. If one element returned by the iterator is not contained in
      * this {@code Collection}, then {@code false} is returned; {@code true} otherwise.
      *
-     * @param collection
-     *            the collection of objects.
+     * @param collection the collection of objects.
      * @return {@code true} if all objects in the specified {@code Collection} are
      *         elements of this {@code Collection}, {@code false} otherwise.
-     * @throws ClassCastException
-     *                if one or more elements of {@code collection} isn't of the
-     *                correct type.
-     * @throws NullPointerException
-     *                if {@code collection} contains at least one {@code null}
-     *                element and this {@code Collection} doesn't support {@code null}
-     *                elements.
-     * @throws NullPointerException
-     *                if {@code collection} is {@code null}.
+     * @throws ClassCastException   if one or more elements of {@code collection} isn't of the
+     *                              correct type.
+     * @throws NullPointerException if {@code collection} contains at least one {@code null}
+     *                              element and this {@code Collection} doesn't support {@code null}
+     *                              elements.
+     * @throws NullPointerException if {@code collection} is {@code null}.
      */
     public boolean containsAll(Collection<?> collection) {
         Iterator<?> it = collection.iterator();
@@ -178,7 +165,6 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      *
      * @return {@code true} if this {@code Collection} has no elements, {@code false}
      *         otherwise.
-     *
      * @see #size
      */
     public boolean isEmpty() {
@@ -190,7 +176,7 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * objects contained by this {@code Collection}. The order in which the elements are
      * returned by the {@link Iterator} is not defined unless the instance of the
      * {@code Collection} has a defined order.  In that case, the elements are returned in that order.
-     * <p>
+     * <p/>
      * In this class this method is declared abstract and has to be implemented
      * by concrete {@code Collection} implementations.
      *
@@ -210,17 +196,13 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * not support removing elements, an {@code UnsupportedOperationException}
      * is thrown.
      *
-     * @param object
-     *            the object to remove.
+     * @param object the object to remove.
      * @return {@code true} if this {@code Collection} is modified, {@code false}
      *         otherwise.
-     * @throws UnsupportedOperationException
-     *                if removing from this {@code Collection} is not supported.
-     * @throws ClassCastException
-     *                if the object passed is not of the correct type.
-     * @throws NullPointerException
-     *                if {@code object} is {@code null} and this {@code Collection}
-     *                doesn't support {@code null} elements.
+     * @throws UnsupportedOperationException if removing from this {@code Collection} is not supported.
+     * @throws ClassCastException            if the object passed is not of the correct type.
+     * @throws NullPointerException          if {@code object} is {@code null} and this {@code Collection}
+     *                                       doesn't support {@code null} elements.
      */
     public boolean remove(Object object) {
         Iterator<?> it = iterator();
@@ -247,7 +229,7 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * specified {@code Collection} (optional). After this method returns none of the
      * elements in the passed {@code Collection} can be found in this {@code Collection}
      * anymore.
-     * <p>
+     * <p/>
      * This implementation iterates over this {@code Collection} and tests for each
      * element {@code e} returned by the iterator, whether it is contained in
      * the specified {@code Collection}. If this test is positive, then the {@code
@@ -255,21 +237,16 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * support removing elements, an {@code UnsupportedOperationException} is
      * thrown.
      *
-     * @param collection
-     *            the collection of objects to remove.
+     * @param collection the collection of objects to remove.
      * @return {@code true} if this {@code Collection} is modified, {@code false}
      *         otherwise.
-     * @throws UnsupportedOperationException
-     *                if removing from this {@code Collection} is not supported.
-     * @throws ClassCastException
-     *                if one or more elements of {@code collection} isn't of the
-     *                correct type.
-     * @throws NullPointerException
-     *                if {@code collection} contains at least one {@code null}
-     *                element and this {@code Collection} doesn't support {@code null}
-     *                elements.
-     * @throws NullPointerException
-     *                if {@code collection} is {@code null}.
+     * @throws UnsupportedOperationException if removing from this {@code Collection} is not supported.
+     * @throws ClassCastException            if one or more elements of {@code collection} isn't of the
+     *                                       correct type.
+     * @throws NullPointerException          if {@code collection} contains at least one {@code null}
+     *                                       element and this {@code Collection} doesn't support {@code null}
+     *                                       elements.
+     * @throws NullPointerException          if {@code collection} is {@code null}.
      */
     public boolean removeAll(Collection<?> collection) {
         boolean result = false;
@@ -288,7 +265,7 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * {@code Collection} passed (optional). After this method returns this {@code Collection}
      * will only contain elements that also can be found in the {@code Collection}
      * passed to this method.
-     * <p>
+     * <p/>
      * This implementation iterates over this {@code Collection} and tests for each
      * element {@code e} returned by the iterator, whether it is contained in
      * the specified {@code Collection}. If this test is negative, then the {@code
@@ -296,21 +273,16 @@ public abstract class AbstractCollection<E> implements Collection<E> {
      * support removing elements, an {@code UnsupportedOperationException} is
      * thrown.
      *
-     * @param collection
-     *            the collection of objects to retain.
+     * @param collection the collection of objects to retain.
      * @return {@code true} if this {@code Collection} is modified, {@code false}
      *         otherwise.
-     * @throws UnsupportedOperationException
-     *                if removing from this {@code Collection} is not supported.
-     * @throws ClassCastException
-     *                if one or more elements of {@code collection}
-     *                isn't of the correct type.
-     * @throws NullPointerException
-     *                if {@code collection} contains at least one
-     *                {@code null} element and this {@code Collection} doesn't support
-     *                {@code null} elements.
-     * @throws NullPointerException
-     *                if {@code collection} is {@code null}.
+     * @throws UnsupportedOperationException if removing from this {@code Collection} is not supported.
+     * @throws ClassCastException            if one or more elements of {@code collection}
+     *                                       isn't of the correct type.
+     * @throws NullPointerException          if {@code collection} contains at least one
+     *                                       {@code null} element and this {@code Collection} doesn't support
+     *                                       {@code null} elements.
+     * @throws NullPointerException          if {@code collection} is {@code null}.
      */
     public boolean retainAll(Collection<?> collection) {
         boolean result = false;
@@ -326,7 +298,7 @@ public abstract class AbstractCollection<E> implements Collection<E> {
 
     /**
      * Returns a count of how many objects this {@code Collection} contains.
-     * <p>
+     * <p/>
      * In this class this method is declared abstract and has to be implemented
      * by concrete {@code Collection} implementations.
      *

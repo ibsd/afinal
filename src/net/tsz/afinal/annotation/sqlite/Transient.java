@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
 
 
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME) 
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Transient {
 
 }

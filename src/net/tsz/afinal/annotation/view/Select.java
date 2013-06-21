@@ -21,10 +21,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME) 
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Select {
 
-	public String selected();
-	public String noSelected() default "";
-	
+    public String selected();
+
+    public String noSelected() default "";
+
 }

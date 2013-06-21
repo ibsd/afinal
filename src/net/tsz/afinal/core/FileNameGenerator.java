@@ -19,8 +19,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileNameGenerator {
-	  
-	
+
+
     public static String generator(String key) {
         String cacheKey;
         try {
